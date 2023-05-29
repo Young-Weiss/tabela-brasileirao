@@ -6,8 +6,8 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Patrick/Desktop/jackson/jackson-annotations-2.15.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Patrick/Desktop/jackson/jackson-core-2.15.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Patrick/Desktop/jackson/jackson-databind-2.15.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/rosafernando/eclipse-workspace/tabela-brasileirao/dependencias/jackson-annotations-2.15.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/rosafernando/eclipse-workspace/tabela-brasileirao/dependencias/jackson-core-2.15.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/rosafernando/eclipse-workspace/tabela-brasileirao/dependencias/jackson-databind-2.15.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
