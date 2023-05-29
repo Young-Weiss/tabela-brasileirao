@@ -27,6 +27,13 @@ public class Time {
 		return "Time [id=" + id + ", nome=" + nome + "]";
 	}
 	
+	public String info() {
+		return "Time [id=" + id + ", nome=" + nome + ", pontos=" + pontos + ", numeroJogos=" + numeroJogos
+				+ ", numeroVitorias=" + numeroVitorias + ", numeroEmpates=" + numeroEmpates + ", numeroDerrotas="
+				+ numeroDerrotas + ", golsPro=" + golsPro + ", golsSofridos=" + golsSofridos
+				+ ", percentualAproveitamento=" + percentualAproveitamento + "]";
+	}
+
 	public void calcularAproveitamento() {
 		this.percentualAproveitamento = (this.pontos / (this.numeroJogos * 3)) * 100;
 	}

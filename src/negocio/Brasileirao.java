@@ -5,9 +5,11 @@ import java.util.List;
 
 public class Brasileirao {
 	private List<Time> times;
+	private final BrasileiraoServico brasileiraoServico;
 	
 	public Brasileirao() {
-		times = new ArrayList<Time>();
+		times = new ArrayList<>();
+		brasileiraoServico = new BrasileiraoServico();
 	}
 	
 	@Override
@@ -51,11 +53,28 @@ public class Brasileirao {
 		jogo.getTime2().calcularAproveitamento();
 	}
 	
-	public Time filtrarPorId(int id) {
+	public void mostrarTabelaClassificacao() {
+		for (Time time : times) 
+			System.out.println(time.info());
+	}
+	
+	public Time filtrarTimePorId(int id) {
 		for (Time time : times) {
 			if(time.getId() == id)
 				return time;
 		}
 		return null;
+	}
+
+	public List<Time> getTimes() {
+		return times;
+	}
+
+	public void setTimes(List<Time> times) {
+		this.times = times;
+	}
+	
+	public void setTimesJson() {
+		setTimes(brasileiraoServico.carregarArquivoJson());
 	}
 }
