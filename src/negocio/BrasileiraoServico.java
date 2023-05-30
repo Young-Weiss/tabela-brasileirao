@@ -69,17 +69,16 @@ public class BrasileiraoServico {
 	    File arquivoJson = tabelaJson.getTabelaJson();
 
 	    try {
-	    	if(!tabelaJson.estaVazia()) {
-	    		// Lê o arquivo e desserializa o conteúdo para um objeto
-		        Brasileirao brasileirao = objectMapper.readValue(arquivoJson, Brasileirao.class);
-		        ArrayList<Time> times = (ArrayList<Time>) brasileirao.getTimes();
-	
-		        return times;
-	    	}
+	    	if(tabelaJson.estaVazia()) return new ArrayList<Time>();
+	    	
+	    	Brasileirao brasileirao = objectMapper.readValue(arquivoJson, Brasileirao.class);
+	        ArrayList<Time> times = brasileirao.getTimes();
+
+	        return times;
 	    } catch (IOException e) {
 	            e.printStackTrace();
 	    }
-	    
+
 	    return new ArrayList<Time>();
 	}
 	

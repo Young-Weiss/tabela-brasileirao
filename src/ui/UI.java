@@ -21,13 +21,12 @@ public class UI {
 		opcoes = new Opcoes();
 		brasileirao = new Brasileirao();
 		brasileiraoServico = new BrasileiraoServico();
+		brasileirao.setTimesJson();
 	}
 	
 	public void menu() throws JsonProcessingException {
 		int opcao; 
 		do {
-			//TODO verificar o método abaixo (BUG)
-			//brasileirao.setTimesJson();
 			opcoes.exibir();
 			opcao = escolherOpcao();
 			
