@@ -1,10 +1,9 @@
 package negocio;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Brasileirao {
-	private List<Time> times;
+	private ArrayList<Time> times;
 	private final BrasileiraoServico brasileiraoServico;
 	
 	public Brasileirao() {
@@ -66,11 +65,11 @@ public class Brasileirao {
 		return null;
 	}
 
-	public List<Time> getTimes() {
+	public ArrayList<Time> getTimes() {
 		return times;
 	}
 
-	public void setTimes(List<Time> times) {
+	public void setTimes(ArrayList<Time> times) {
 		this.times = times;
 	}
 	
