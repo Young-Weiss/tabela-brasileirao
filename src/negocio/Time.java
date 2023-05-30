@@ -1,6 +1,6 @@
 package negocio;
 
-public class Time {
+public class Time extends TimePorPontosComparator {
 	private static int sequencia = 1;
 	private int id;
 	private String nome; 
@@ -35,7 +35,7 @@ public class Time {
 	}
 
 	public void calcularAproveitamento() {
-		this.percentualAproveitamento = (this.pontos / (this.numeroJogos * 3)) * 100;
+		percentualAproveitamento = ((double) pontos / ((double) numeroJogos * 3)) * 100;
 	}
 
 	public int getId() {
