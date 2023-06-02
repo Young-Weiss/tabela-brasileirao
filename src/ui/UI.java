@@ -35,12 +35,15 @@ public class UI {
 					inserirTimeUi();
 					break;
 				case 2:
-					registrarPartidaUi();
+					deletarTimeUi();
 					break;
 				case 3:
-					mostrarTabelaClassificacaoUi();
+					registrarPartidaUi();
 					break;
 				case 4:
+					mostrarTabelaClassificacaoUi();
+					break;
+				case 5:
 					brasileiraoServico.salvarArquivoJson(brasileirao);
 					break;
 				default:
@@ -53,15 +56,31 @@ public class UI {
 		} while(opcao != 4);
 		
 	}
-	
+
 	private void inserirTimeUi() {
 		Time timeAdicionar = new Time();
 		System.out.println();
 		System.out.println("Nome do time: ");
-		timeAdicionar.setNome(sc.next());
+		sc.nextLine();
+		timeAdicionar.setNome(sc.nextLine());
 		brasileirao.inserirTime(timeAdicionar);
 	}
 	
+	private void deletarTimeUi() {
+		int idTimeDeletar;
+		
+		System.out.println(brasileirao);
+		System.out.println("Digite o ID do time que deseja deletar: ");
+		idTimeDeletar = sc.nextInt();
+		
+		if (brasileirao.filtrarTimePorId(idTimeDeletar) != null) {
+			brasileirao.getTimes().remove(idTimeDeletar);
+			brasileirao.ordenarTimes();
+			System.out.println("Time deletado com sucesso");
+		}
+		System.out.println("Time com o ID especificado não existe");
+	}
+
 	private void registrarPartidaUi() throws JsonProcessingException {
 		Time time1, time2; 
 		int id1, id2, placar1, placar2;
