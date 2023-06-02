@@ -1,6 +1,6 @@
 package negocio;
 
-public class Time extends TimePorPontosComparator {
+public class Time {
 	private static int sequencia = 1;
 	private int id;
 	private String nome; 
