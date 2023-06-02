@@ -62,9 +62,15 @@ public class UI {
 		brasileirao.inserirTime(timeAdicionar);
 	}
 	
-	private void registrarPartidaUi() {
+	private void registrarPartidaUi() throws JsonProcessingException {
 		Time time1, time2; 
 		int id1, id2, placar1, placar2;
+		
+		if (brasileirao.getTimes().size() < 2) {
+			System.out.println("Não existem times suficientes para uma partida!\n"
+							 + "Adicione mais times para poder registrar uma partida!\n");
+			menu();
+		}
 		
 		System.out.println(brasileirao);
 		System.out.println("Digite o ID do primeiro time: ");
@@ -77,6 +83,12 @@ public class UI {
 		System.out.println("Digite o ID do segundo time: ");
 		id2 = sc.nextInt();
 		time2 = brasileirao.filtrarTimePorId(id2);
+		
+		if(id1 == id2) {
+			System.out.println("O time " + time1.getNome() + " não pode jogar contra ele mesmo!\n"
+							 + "Insira novamente os times!\n");
+			menu();
+		}
 		
 		System.out.println("Digite o placar do " + time2.getNome() + ": ");
 		placar2 = sc.nextInt();
