@@ -19,6 +19,7 @@ public class Brasileirao {
 
 	public void inserirTime(Time time) {
 		times.add(time);
+		ordenarTimes();
 	}
 	
 	public void registrarPartida(Jogo jogo) {
@@ -51,11 +52,12 @@ public class Brasileirao {
 		
 		jogo.getTime1().calcularAproveitamento();
 		jogo.getTime2().calcularAproveitamento();
+		
+		ordenarTimes();
 	}
 	
 	public void mostrarTabelaClassificacao() {
 		DecimalFormat df = new DecimalFormat("#");
-		times.sort(new TimePorPontosComparator().reversed());
 		
 		System.out.printf("%22s%s%22s\n", "", "Brasileirão", "");
 		System.out.printf("%-15s %-4s %-4s %-4s %-4s %-4s %-4s %-4s %-4s %n", "Clube", "Pts", "PJ", "VIT", "E", "DER", "GM", "GC", "APR\n");
@@ -82,5 +84,9 @@ public class Brasileirao {
 	
 	public void setTimesJson() {
 		setTimes(brasileiraoServico.carregarArquivoJson());
+	}
+	
+	public void ordenarTimes() {
+		times.sort(new TimePorPontosComparator().reversed());
 	}
 }
