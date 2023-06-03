@@ -11,6 +11,40 @@ public class Jogo {
 		this.time2 = time2;
 		this.golsTime1 = golsTime1;
 		this.golsTime2 = golsTime2;
+		
+		registrarPartida();
+	} 
+
+	private void registrarPartida() {
+		time1.adicionaNumeroJogos();
+		time2.adicionaNumeroJogos();
+
+		time1.adicionarGolsPro(golsTime1);
+		time2.adicionarGolsPro(golsTime2);
+
+		time1.adicionarGolsSofridos(golsTime2);
+		time2.adicionarGolsSofridos(golsTime1);
+
+		if (golsTime1 > golsTime2) {
+			time1.adicionarVitoria();
+			time2.adicionarDerrota();
+			
+			time1.adicionarPontos(3); 
+		} else if (golsTime1 < golsTime2) {
+			time2.adicionarVitoria();
+			time1.adicionarDerrota();
+			
+			time2.adicionarPontos(3);
+		} else {
+			time1.adicionarPontos(1);
+			time2.adicionarPontos(1);
+
+			time1.adicionarEmpate();
+			time2.adicionarEmpate();
+		}
+
+		time1.calcularAproveitamento();
+		time2.calcularAproveitamento();
 	}
 
 	public Time getTime1() {

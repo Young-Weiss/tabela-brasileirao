@@ -53,7 +53,7 @@ public class UI {
 			}
 			System.out.println();
 			
-		} while(opcao != 4);
+		} while(opcao != 5);
 		
 	}
 
@@ -73,12 +73,10 @@ public class UI {
 		System.out.println("Digite o ID do time que deseja deletar: ");
 		idTimeDeletar = sc.nextInt();
 		
-		if (brasileirao.filtrarTimePorId(idTimeDeletar) != null) {
-			brasileirao.getTimes().remove(idTimeDeletar);
-			brasileirao.ordenarTimes();
+		if (brasileirao.deletarTimePorId(idTimeDeletar))
 			System.out.println("Time deletado com sucesso");
-		}
-		System.out.println("Time com o ID especificado não existe");
+		else 
+			System.out.println("Não foi possível deletar o time com o ID especificado");
 	}
 
 	private void registrarPartidaUi() throws JsonProcessingException {
@@ -96,23 +94,40 @@ public class UI {
 		id1 = sc.nextInt();
 		time1 = brasileirao.filtrarTimePorId(id1);
 		
-		System.out.println("Digite o placar do " + time1.getNome() + ": ");
-		placar1 = sc.nextInt();
+		if (time1 == null) {
+			System.out.println("Time com o ID especificado não existe!\n"
+							 + "Selecione novamente!");
+			registrarPartidaUi();
+		}
+		
+		do {
+			System.out.println("Digite o placar do " + time1.getNome() + ": ");
+			placar1 = sc.nextInt();
+		} while (placar1 < 0);
 		
 		System.out.println("Digite o ID do segundo time: ");
 		id2 = sc.nextInt();
 		time2 = brasileirao.filtrarTimePorId(id2);
 		
-		if(id1 == id2) {
-			System.out.println("O time " + time1.getNome() + " não pode jogar contra ele mesmo!\n"
-							 + "Insira novamente os times!\n");
-			menu();
+		if (time2 == null) {
+			System.out.println("Time com o ID especificado não existe!\n"
+							 + "Selecione novamente os times!");
+			registrarPartidaUi();
 		}
 		
-		System.out.println("Digite o placar do " + time2.getNome() + ": ");
-		placar2 = sc.nextInt();
+		if(id1 == id2) {
+			System.out.println("O time " + time1.getNome() + " não pode jogar contra ele mesmo!\n"
+							 + "Insira outro time!\n");
+			menu();
+		} 
 		
-		brasileirao.registrarPartida(new Jogo(time1, time2, placar1, placar2));
+		do {
+			System.out.println("Digite o placar do " + time2.getNome() + ": ");
+			placar2 = sc.nextInt();
+		} while (placar2 < 0);
+		
+		new Jogo(time1, time2, placar1, placar2);
+		brasileirao.ordenarTimes();
 	}
 	
 	private void mostrarTabelaClassificacaoUi() {
