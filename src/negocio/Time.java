@@ -113,4 +113,32 @@ public class Time {
 	public void setPercentualAproveitamento(double percentualAproveitamento) {
 		this.percentualAproveitamento = percentualAproveitamento;
 	}
+	
+	public void adicionaNumeroJogos() {
+		numeroJogos++;
+	}
+
+	public void adicionarGolsPro(int gols) {
+		golsPro += gols;
+	}
+
+	public void adicionarGolsSofridos(int golsTime2) {
+		golsSofridos += golsTime2;
+	}
+
+	public void adicionarVitoria() {
+		numeroVitorias++;
+	}
+
+	public void adicionarDerrota() {
+		numeroDerrotas++;
+	}
+
+	public void adicionarPontos(int pontos) {
+		this.pontos += pontos;
+	}
+
+	public void adicionarEmpate() {
+		numeroEmpates++;
+	}
 }
