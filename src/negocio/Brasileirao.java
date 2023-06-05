@@ -68,7 +68,7 @@ public class Brasileirao {
 				break;
 			}
 		}
-
+		
 		ordenarTimes();
 		return timeASerDeletado == null ? false : true;
 	}
