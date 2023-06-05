@@ -45,7 +45,7 @@ public class UI {
 					break;
 				case 5:
 					brasileiraoServico.salvarArquivoJson(brasileirao);
-					break;
+					break; 
 				default:
 					System.out.println("Opção inválida");
 					brasileiraoServico.salvarArquivoJson(brasileirao);
@@ -55,6 +55,7 @@ public class UI {
 			
 		} while(opcao != 5);
 		
+		sc.close();
 	}
 
 	private void inserirTimeUi() {

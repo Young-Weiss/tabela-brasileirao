@@ -23,47 +23,6 @@ public class BrasileiraoServico {
 		objectMapper = new ObjectMapper();
 	}
 	
-	// TODO tipo de retorno errado???
-//	public List<Time> carregarArquivoJson() {
-//		
-//		try (FileReader fr = new FileReader(tabelaJson.getTabelaJson())) {
-//			if (!tabelaJson.estaVazia()) {
-//				String jsonParaString = "";
-//				int i = 0;
-//				
-//				while ((i = fr.read()) != -1) 
-//					jsonParaString += i;
-//				
-//				Brasileirao brasileiraoAdicionar = jsonParaJava(jsonParaString);
-//				return brasileiraoAdicionar.getTimes();
-//			}
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//		return Collections.emptyList();
-//	}
-	
-//	public ArrayList<Time> carregarArquivoJson() {
-//		
-//		try (FileReader fr = new FileReader(tabelaJson.getTabelaJson())) {
-//			if (!tabelaJson.estaVazia()) {
-//				String jsonParaString = "";
-//				int i = 0;
-//				
-//				while ((i = fr.read()) != -1) 
-//					jsonParaString += i;
-//				
-//				Brasileirao brasileiraoAdicionar = jsonParaJava(jsonParaString);
-//				ArrayList<Time> times = new ArrayList<>(brasileiraoAdicionar.getTimes());
-//				
-//				return times;
-//			}
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//		return new ArrayList<Time>();
-//	}
-	
 	public ArrayList<Time> carregarArquivoJson() {
 		ObjectMapper objectMapper = new ObjectMapper();
 	    File arquivoJson = tabelaJson.getTabelaJson();
@@ -78,7 +37,7 @@ public class BrasileiraoServico {
 	    } catch (IOException e) {
 	            e.printStackTrace();
 	    }
-
+ 
 	    return new ArrayList<Time>();
 	}
 	
@@ -104,7 +63,6 @@ public class BrasileiraoServico {
 //	public String javaToJson(Brasileirao brasileirao) throws JsonProcessingException {
 //		return objectMapper.writeValueAsString(brasileirao);
 //	}
-
 	
 //	public Brasileirao jsonToJava(String json) throws JsonMappingException, JsonProcessingException {
 //		return objectMapper.readValue(json, Brasileirao.class);

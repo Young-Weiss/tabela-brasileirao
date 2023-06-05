@@ -13,7 +13,7 @@ public class Jogo {
 		this.golsTime2 = golsTime2;
 		
 		registrarPartida();
-	} 
+	}  
 
 	private void registrarPartida() {
 		time1.adicionaNumeroJogos();
