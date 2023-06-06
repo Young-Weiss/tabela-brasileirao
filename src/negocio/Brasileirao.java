@@ -22,18 +22,7 @@ public class Brasileirao {
 		ordenarTimes();
 	}
 
-	public void mostrarTabelaClassificacao() {
-		DecimalFormat df = new DecimalFormat("#");
-
-		System.out.printf("%22s%s%22s\n", "", "Brasileirão", "");
-		System.out.printf("%-15s %-4s %-4s %-4s %-4s %-4s %-4s %-4s %-4s %n", "Clube", "Pts", "PJ", "VIT", "E", "DER",
-				"GM", "GC", "APR\n");
-
-		for (Time time : times)
-			System.out.printf("%-15s %-4d %-4d %-4d %-4d %-4d %-4d %-4d %-3s%% %n", time.getNome(), time.getPontos(),
-					time.getNumeroJogos(), time.getNumeroVitorias(), time.getNumeroEmpates(), time.getNumeroDerrotas(),
-					time.getGolsPro(), time.getGolsSofridos(), df.format(time.getPercentualAproveitamento()));
-	}
+	
 
 	public Time filtrarTimePorId(int id) {
 		for (Time time : times) {

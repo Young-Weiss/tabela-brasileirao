@@ -17,12 +17,12 @@ class TimeTeste {
 	
 	@Test
 	void toStringTeste() {
-		assertEquals("Time [id=2, nome=Time Teste]", time.toString());
+		assertEquals("Time [id=" + (Time.getSequencia() - 1) + ", nome=Time Teste]", time.toString());
 	}
 	
 	@Test
 	void getIdTeste() {
-		assertEquals(1, time.getId());
+		assertEquals(Time.getSequencia() - 1, time.getId());
 	}
 	
 	@Test
@@ -169,10 +169,17 @@ class TimeTeste {
 	}
 	
 	@Test
-	void adicionarPontosTeste() {
-		time.adicionarPontos(5);
+	void adicionarPontosParaVitoriaTeste() {
+		time.adicionarPontos(3);
 		
-		assertEquals(5, time.getPontos());
+		assertEquals(3, time.getPontos());
+	}
+	
+	@Test
+	void adicionarPontosParaEmpateTeste() {
+		time.adicionarPontos(1);
+		
+		assertEquals(1, time.getPontos());
 	}
 	
 	@Test

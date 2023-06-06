@@ -37,7 +37,7 @@ public class Jogo {
 			time2.adicionarPontos(3);
 		} else {
 			time1.adicionarPontos(1);
-			time2.adicionarPontos(1);
+			time2.adicionarPontos(1); 
 
 			time1.adicionarEmpate();
 			time2.adicionarEmpate();

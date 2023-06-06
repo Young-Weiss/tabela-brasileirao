@@ -66,5 +66,19 @@ class JogoTeste {
 	void setGolsTime2Teste() {
 		jogo.setGolsTime2(2);
 		assertEquals(2, jogo.getGolsTime2());
+	} 
+	
+	@Test
+	void criarJogoTime1GanhaTeste() {
+		Jogo jogo = new Jogo(new Time("Time 1"),new Time("Time 2"), 1, 0);
+		
+		assertEquals(3, jogo.getTime1().getPontos());
+	}
+	
+	@Test
+	void criarJogoTime2GanhaTeste() {
+		Jogo jogo = new Jogo(new Time("Time 1"),new Time("Time 2"), 0, 1);
+		
+		assertEquals(3, jogo.getTime2().getPontos());
 	}
 }
