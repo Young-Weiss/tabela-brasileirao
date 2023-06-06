@@ -20,7 +20,7 @@ public class UI {
 		brasileirao = new Brasileirao();
 		brasileiraoServico = new BrasileiraoServico();
 		brasileirao.setTimesJson();
-	} 
+	}  
 	
 	public void menu() throws JsonProcessingException {
 		int opcao; 
@@ -48,7 +48,7 @@ public class UI {
 					System.out.println("Opção inválida");
 					brasileiraoServico.salvarArquivoJson(brasileirao);
 					break;
-			}
+			} 
 			System.out.println();
 			
 		} while(opcao != 5);
@@ -94,7 +94,7 @@ public class UI {
 			System.out.println("Não existem times suficientes para uma partida!\n"
 							 + "Adicione mais times para poder registrar uma partida!\n");
 			menu();
-		}
+		} 
 		
 		System.out.println(brasileirao);
 		System.out.println("Digite o ID do primeiro time: ");
@@ -151,7 +151,22 @@ public class UI {
 	}
 	
 	private int escolherOpcao() {
-		System.out.println("Digite a opção desejada: ");
-		return sc.nextInt();
+		int opcao = 0;
+		boolean inputValido = false;
+
+		do {
+			System.out.println("Digite a opção desejada: ");
+			
+			if (sc.hasNextInt()) {
+				opcao = sc.nextInt();
+				inputValido = true;
+			} else { 
+				System.out.println("Opção inválida");
+	            sc.next();
+	            exibirOpcoes();
+			}
+		} while(!inputValido);
+		
+		return opcao;
 	}
 }

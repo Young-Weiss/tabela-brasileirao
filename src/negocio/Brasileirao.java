@@ -1,6 +1,5 @@
 package negocio;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class Brasileirao {
@@ -11,7 +10,7 @@ public class Brasileirao {
 		times = new ArrayList<>();
 		brasileiraoServico = new BrasileiraoServico();
 	}
-
+ 
 	@Override
 	public String toString() {
 		return "Brasileirao [times=" + times + "]";

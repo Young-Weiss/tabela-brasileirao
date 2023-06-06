@@ -11,7 +11,7 @@ public class Jogo {
 		this.time2 = time2;
 		this.golsTime1 = golsTime1;
 		this.golsTime2 = golsTime2;
-		
+		 
 		registrarPartida();
 	}  
 

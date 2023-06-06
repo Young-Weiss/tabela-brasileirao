@@ -10,11 +10,11 @@ public class TabelaJson {
 	
 	public TabelaJson() {
 		this.tabelaJson = new File("tabela.json");
-	}
+	} 
 
 	public File getTabelaJson() {
 		return tabelaJson;
-	}
+	} 
 
 	public void setTabelaJson(File tabelaJson) {
 		this.tabelaJson = tabelaJson;
@@ -22,7 +22,7 @@ public class TabelaJson {
 	
 	public boolean estaVazia() {
 		try (BufferedReader br = new BufferedReader(new FileReader(tabelaJson))) {
-			if(br.readLine() == null)
+			if (br.readLine() == null)
 				return true;
 		} catch (IOException e) {
 			e.printStackTrace();
