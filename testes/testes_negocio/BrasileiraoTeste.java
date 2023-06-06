@@ -69,4 +69,21 @@ class BrasileiraoTeste {
 		
 		assertEquals(novaLista.toString(), brasileirao.getTimes().toString());
 	}
+	
+	@Test
+	void deletarTimePorIdRetornaFalseQuandoIdNaoEncontrado() {
+		assertFalse(brasileirao.deletarTimePorId(Time.getSequencia()));
+	}
+	
+	@Test
+	void deletarTimePorIdDeletaTime() {
+		brasileirao.inserirTime(new Time("Time Teste"));
+		
+		assertTrue(brasileirao.deletarTimePorId(brasileirao.getTimes().get(0).getId()));
+	}
+	
+	@Test
+	void setTimesJsonTeste() {
+		
+	}
 }

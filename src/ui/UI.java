@@ -1,5 +1,6 @@
 package ui;
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -7,29 +8,26 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import negocio.Brasileirao;
 import negocio.BrasileiraoServico;
 import negocio.Jogo;
-import negocio.Opcoes;
 import negocio.Time;
 
 public class UI {
 	private Scanner sc;
-	private Opcoes opcoes;
 	private Brasileirao brasileirao;
 	private BrasileiraoServico brasileiraoServico;
-	
+	 
 	public UI() {
 		sc = new Scanner(System.in);
-		opcoes = new Opcoes();
 		brasileirao = new Brasileirao();
 		brasileiraoServico = new BrasileiraoServico();
 		brasileirao.setTimesJson();
-	}
+	} 
 	
 	public void menu() throws JsonProcessingException {
 		int opcao; 
 		do {
-			opcoes.exibir();
+			exibirOpcoes();
 			opcao = escolherOpcao();
-			
+			 
 			switch(opcao) {
 				case 1:
 					inserirTimeUi();
@@ -58,6 +56,14 @@ public class UI {
 		sc.close();
 	}
 
+	private void exibirOpcoes() {
+		System.out.println("1 - Inserir time\n"
+						 + "2 - Deletar time\n"
+						 + "3 - Registrar partida\n"
+						 + "4 - Mostrar tabela classificação\n"
+						 + "5 - Sair");
+	}
+	
 	private void inserirTimeUi() {
 		Time timeAdicionar = new Time();
 		System.out.println();
@@ -132,8 +138,16 @@ public class UI {
 	}
 	
 	private void mostrarTabelaClassificacaoUi() {
-		System.out.println();
-		brasileirao.mostrarTabelaClassificacao();
+		DecimalFormat df = new DecimalFormat("#");
+
+		System.out.printf("%22s%s%22s\n", "", "Brasileirão", "");
+		System.out.printf("%-15s %-4s %-4s %-4s %-4s %-4s %-4s %-4s %-4s %n", "Clube", "Pts", "PJ", "VIT", "E", "DER",
+				"GM", "GC", "APR\n");
+
+		for (Time time : brasileirao.getTimes())
+			System.out.printf("%-15s %-4d %-4d %-4d %-4d %-4d %-4d %-4d %-3s%% %n", time.getNome(), time.getPontos(),
+					time.getNumeroJogos(), time.getNumeroVitorias(), time.getNumeroEmpates(), time.getNumeroDerrotas(),
+					time.getGolsPro(), time.getGolsSofridos(), df.format(time.getPercentualAproveitamento()));
 	}
 	
 	private int escolherOpcao() {

@@ -59,17 +59,4 @@ public class BrasileiraoServico {
 	private Brasileirao jsonParaJava(String json) throws JsonMappingException, JsonProcessingException {
 		return objectMapper.readValue(json, Brasileirao.class);
 	}
-	
-//	public String javaToJson(Brasileirao brasileirao) throws JsonProcessingException {
-//		return objectMapper.writeValueAsString(brasileirao);
-//	}
-	
-//	public Brasileirao jsonToJava(String json) throws JsonMappingException, JsonProcessingException {
-//		return objectMapper.readValue(json, Brasileirao.class);
-//	}
-
-	public String jsonNode(String json) throws JsonMappingException, JsonProcessingException {
-		JsonNode jsonNode = objectMapper.readTree(json);
-		return jsonNode.get("times").asText();
-	}
 }

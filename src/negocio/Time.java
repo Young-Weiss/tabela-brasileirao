@@ -13,6 +13,7 @@ public class Time {
 	private int golsSofridos;
 	private double percentualAproveitamento;
 	
+
 	public Time() {
 		this.id = sequencia++;
 	}
@@ -38,6 +39,10 @@ public class Time {
 		percentualAproveitamento = ((double) pontos / ((double) numeroJogos * 3)) * 100;
 	}
 
+	public static int getSequencia() {
+		return sequencia;
+	}
+	
 	public int getId() {
 		return id;
 	}
