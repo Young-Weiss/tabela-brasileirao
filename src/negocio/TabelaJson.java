@@ -3,6 +3,7 @@ package negocio;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 public class TabelaJson {
@@ -13,7 +14,7 @@ public class TabelaJson {
 	} 
 
 	public File getTabelaJson() {
-		return tabelaJson;
+		return tabelaJson; 
 	} 
 
 	public void setTabelaJson(File tabelaJson) {
@@ -28,5 +29,14 @@ public class TabelaJson {
 			e.printStackTrace();
 		}
 		return false;
+	}
+	
+	public void limpar() {
+		try (FileWriter fw = new FileWriter(tabelaJson)) {
+	        fw.write("");
+	        fw.flush();
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
 	}
 }

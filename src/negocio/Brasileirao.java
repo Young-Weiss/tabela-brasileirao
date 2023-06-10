@@ -16,6 +16,10 @@ public class Brasileirao {
 		return "Brasileirao [times=" + times + "]";
 	}
 
+	public BrasileiraoServico getBrasileiraoServico() {
+		return brasileiraoServico;
+	}
+
 	public void inserirTime(Time time) {
 		times.add(time);
 		ordenarTimes();
@@ -37,7 +41,7 @@ public class Brasileirao {
  
 	public void setTimes(ArrayList<Time> times) {
 		this.times = times;
-	}
+	} 
 
 	public void setTimesJson() {
 		setTimes(brasileiraoServico.carregarArquivoJson());

@@ -17,7 +17,17 @@ public class BrasileiraoServico {
 		tabelaJson = new TabelaJson();
 		objectMapper = new ObjectMapper();
 	}
-	 
+	
+	public TabelaJson getTabelaJson() {
+		return tabelaJson;
+	}
+
+	public void setTabelaJson(TabelaJson tabelaJson) {
+		this.tabelaJson = tabelaJson;
+	}
+
+
+
 	public ArrayList<Time> carregarArquivoJson() {
 		ObjectMapper objectMapper = new ObjectMapper();
 	    File arquivoJson = tabelaJson.getTabelaJson();
@@ -34,14 +44,15 @@ public class BrasileiraoServico {
 	    }
  
 	    return new ArrayList<Time>();
-	}
+	} 
 	
 	public void salvarArquivoJson(Brasileirao brasileirao) throws JsonProcessingException {
 		String tabelaSalvar = javaParaJson(brasileirao);
 		
 		try (FileWriter fw = new FileWriter(tabelaJson.getTabelaJson(), false)) {
 			fw.write(tabelaSalvar);
-			
+			//TODO testando abaixo
+			fw.flush();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
