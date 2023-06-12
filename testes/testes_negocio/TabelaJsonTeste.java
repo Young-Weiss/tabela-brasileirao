@@ -3,10 +3,13 @@ package testes_negocio;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 
+import org.junit.Rule;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -23,12 +26,17 @@ class TabelaJsonTeste {
 	@Test
 	void estaVaziaRetornaFalseCasoArquivoNaoEstaVazio() throws IOException {
 		FileWriter fw = new FileWriter(tabelaJson.getTabelaJson());
+		
 		fw.write("Algum texto...");
 		fw.flush();
 		
 		assertFalse(tabelaJson.estaVazia());
 		
-		tabelaJson.getTabelaJson().delete();
+		fw.close();
+		
+	    FileWriter clearWriter = new FileWriter(tabelaJson.getTabelaJson());
+	    clearWriter.write("");
+	    clearWriter.close();
 	}
 	
 	@Test
@@ -36,14 +44,14 @@ class TabelaJsonTeste {
 		FileWriter fw = new FileWriter(tabelaJson.getTabelaJson());
 		fw.write("");
 		fw.flush();
+		fw.close();
 		
 		assertTrue(tabelaJson.estaVazia());
 	}
 	
 	@Test
 	void estaVaziaRetornaIOExceptionCasoArquivoInvalido() {
-		tabelaJson.getTabelaJson().delete();
-		tabelaJson.estaVazia();
+		tabelaJson.setTabelaJson(null);
 		
 		assertThrows(IOException.class, () -> tabelaJson.estaVazia());
 	}

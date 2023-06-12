@@ -27,13 +27,6 @@ public class Time {
 	public String toString() {
 		return "Time [id=" + id + ", nome=" + nome + "]";
 	}
-	
-//	public String info() {
-//		return "Time [id=" + id + ", nome=" + nome + ", pontos=" + pontos + ", numeroJogos=" + numeroJogos
-//				+ ", numeroVitorias=" + numeroVitorias + ", numeroEmpates=" + numeroEmpates + ", numeroDerrotas="
-//				+ numeroDerrotas + ", golsPro=" + golsPro + ", golsSofridos=" + golsSofridos
-//				+ ", percentualAproveitamento=" + percentualAproveitamento + "]";
-//	}
 
 	public void calcularAproveitamento() {
 		percentualAproveitamento = ((double) pontos / ((double) numeroJogos * 3)) * 100;

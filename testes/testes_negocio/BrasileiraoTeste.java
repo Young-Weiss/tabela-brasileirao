@@ -81,9 +81,4 @@ class BrasileiraoTeste {
 		
 		assertTrue(brasileirao.deletarTimePorId(brasileirao.getTimes().get(0).getId()));
 	}
-	
-	@Test
-	void setTimesJsonTeste() {
-		
-	}
 }
