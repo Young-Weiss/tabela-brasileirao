@@ -16,7 +16,7 @@ public class TabelaJson {
 	public File getTabelaJson() {
 		return tabelaJson; 
 	} 
-
+ 
 	public void setTabelaJson(File tabelaJson) {
 		this.tabelaJson = tabelaJson;
 	}
@@ -37,6 +37,6 @@ public class TabelaJson {
 	        fw.flush();
 	    } catch (IOException e) {
 	        e.printStackTrace();
-	    }
+	    } 
 	}
 }

@@ -20,7 +20,7 @@ public class UI {
 		brasileirao = new Brasileirao();
 		brasileiraoServico = new BrasileiraoServico();
 		brasileirao.setTimesJson();
-	}  
+	}   
 	
 	public Brasileirao getBrasileirao() {
 		return brasileirao;
@@ -114,7 +114,7 @@ public class UI {
 						 	 + "Selecione novamente: ");
 			return;
 		}	
-		
+		 
 		do {
 			System.out.println("Digite o placar do " + time1.getNome() + ": ");
 			placar1 = sc.nextInt();

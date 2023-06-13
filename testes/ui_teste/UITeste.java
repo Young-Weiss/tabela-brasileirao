@@ -6,6 +6,7 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -15,19 +16,12 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import ui.UI;
 
 class UITeste {
-	
-    @BeforeAll
-    public static void setup() {
-    	UI ui = new UI();
+	@AfterEach
+	public void tearDown() {
+		UI ui = new UI();
     	ui.getBrasileiraoServico().getTabelaJson().limpar();
-    }
-    
-    @AfterAll
-    public static void tearDown() {
-    	UI ui = new UI();
-    	ui.getBrasileiraoServico().getTabelaJson().limpar();
-    }
-	
+	}
+	 
     @Test
     void inserirTime() throws JsonProcessingException {
     	//input -> Cria Time Teste e sai
@@ -62,7 +56,7 @@ class UITeste {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
         
-        UI ui = new UI();
+        UI ui = new UI(); 
         ui.menu();
         
         assertEquals(2, ui.getBrasileirao().getTimes().size());
@@ -128,4 +122,18 @@ class UITeste {
     	assertEquals(0, ui.getBrasileirao().getTimes().size());
     	assertDoesNotThrow(() -> ui.menu());
     }  
+    
+    @Test
+    void registrarPartidaLoopEnquantoPlacarTime1EhNegativo() throws JsonProcessingException {
+    	//input -> Cria Time B, registra partida entre Time A e B e testa placar negativo e sai
+    	String input = "1\nTime A\n1\nTime B\n3\n1\n-10\n0\n2\n-10\n0\n5";
+    	InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+    	
+    	UI ui = new UI();
+		ui.menu();
+		
+		System.out.println(ui.getBrasileirao().getTimes());
+    	assertEquals(2, ui.getBrasileirao().getTimes().size());
+    } 
 }
