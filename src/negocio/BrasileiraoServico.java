@@ -31,19 +31,17 @@ public class BrasileiraoServico {
 	public ArrayList<Time> carregarArquivoJson() {
 		ObjectMapper objectMapper = new ObjectMapper();
 	    File arquivoJson = tabelaJson.getTabelaJson();
-
+	    ArrayList<Time> times = new ArrayList<>();
+	    
 	    try {
-	    	if (tabelaJson.estaVazia()) return new ArrayList<Time>();
-	    	
+	    	if (tabelaJson.estaVazia()) return times;
+	    		
 	    	Brasileirao brasileirao = objectMapper.readValue(arquivoJson, Brasileirao.class);
-	        ArrayList<Time> times = brasileirao.getTimes();
-
-	        return times;
+	    	times = brasileirao.getTimes();
 	    } catch (IOException e) {
 	            e.printStackTrace();
 	    }
- 
-	    return new ArrayList<Time>();
+	    return times;
 	} 
 	
 	public void salvarArquivoJson(Brasileirao brasileirao) throws JsonProcessingException {
@@ -51,11 +49,10 @@ public class BrasileiraoServico {
 		
 		try (FileWriter fw = new FileWriter(tabelaJson.getTabelaJson(), false)) {
 			fw.write(tabelaSalvar);
-			//TODO testando abaixo
 			fw.flush();
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
+		} 
 	}
 	
 	private String javaParaJson(Brasileirao brasileirao) throws JsonProcessingException {

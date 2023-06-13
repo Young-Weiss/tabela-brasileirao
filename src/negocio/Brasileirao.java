@@ -25,8 +25,6 @@ public class Brasileirao {
 		ordenarTimes();
 	}
 
-	
-
 	public Time filtrarTimePorId(int id) {
 		for (Time time : times) {
 			if (time.getId() == id)
